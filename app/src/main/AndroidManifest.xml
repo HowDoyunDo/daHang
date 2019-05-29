@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.sns_project">
+    <!-- Android Internet Permission -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />  <!-- 위치 정보 권한 -->
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>  <!-- 파일 읽기 권한 -->
+
+    <!-- 카메라 권한 -->
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:usesCleartextTraffic="true">
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDNHnS9jLmJw7B0ia_HkCAEheecD8CVTi4"/> <!-- 구글맵 키 -->
+
+        <activity android:name=".activity.login.SplashActivity"> <!-- Start Activity -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="www.google.com"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.login.LoginActivity" />
+        <activity android:name=".activity.login.SignUpActivity" />
+        <activity android:name=".activity.login.PasswordReset" />
+        <activity android:name=".activity.login.MemberInitActivity" />
+        <activity android:name=".activity.login.MainActivity" />
+        <activity android:name=".activity.camara.CameraActivity" />
+        <activity android:name=".activity.camara.GalleryActivity" />
+        <activity android:name=".activity.BasicActivity" />
+        <activity android:name=".activity.board.WriteGuidePostActivity" />
+        <activity android:name=".activity.board.WriteTourlistPostActivity" />
+        <activity android:name=".activity.board.PostActivity"/>
+        <activity android:name=".activity.catting.ChattingActivity"/>
+        <activity android:name=".activity.catting.MessageActivity"/>
+        <activity android:name=".activity.tour_api.TourListActivity"/>
+        <activity android:name=".activity.tour_api.DetailActivity"/>
+        <activity android:name=".activity.tour_api.GetOtherimgActivity"/>
+        <activity android:name=".activity.tour_api.MapMarkerActivity"/>
+        <activity android:name=".activity.tour_api.KeywordActivity"/>
+        <activity android:name=".activity.tour_api.SearchActivity"/>
+        <activity android:name=".activity.tour_api.GpsFestTourlistActivity"/>
+        <activity android:name=".activity.board.GuideBoardActivity"/>
+        <activity android:name=".activity.login.NameActivity"/>
+        <activity android:name=".activity.board.BoardSelectActivity"/>
+        <activity android:name=".activity.board.TourlistBoardActivity"/>
+
+        <service android:name="Notifications.MyFirebaseldService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+
+
+        <service android:name=".Notifications.MyFirebaseMessaging"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
